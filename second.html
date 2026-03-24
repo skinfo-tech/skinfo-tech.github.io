@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise - Special Video</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ff0066, #6600ff);
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Balloons */
+        .balloon {
+            position: absolute;
+            bottom: -150px;
+            width: 60px;
+            animation: floatUp 9s infinite ease-in;
+            opacity: 0.8;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0); opacity: 0; }
+            20% { opacity: 1; }
+            100% { transform: translateY(-110vh) rotate(20deg); opacity: 0; }
+        }
+
+        .container {
+            margin-top: 40px;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn { 
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        video {
+            width: 85%;
+            max-width: 620px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 0 25px rgba(0,0,0,0.5);
+        }
+
+        /* TOUCH ME button */
+        #touchBtn {
+            display: block;
+            margin-top: 20px;
+            margin-left: 850px;
+            padding: 12px 35px;
+            background: #000;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            color: #fff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #touchBtn:hover {
+            background: #222;
+        }
+
+        /* Wishes box */
+        .wishes-box {
+            display: none;
+            margin: 25px auto;
+            width: 90%;
+            max-width: 600px;
+            background: rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 20px;
+            backdrop-filter: blur(6px);
+            animation: fadeUp 1.5s ease-in-out;
+        }
+
+        .wish-line {
+            font-size: 1.3rem;
+            margin: 10px 0;
+            opacity: 0;
+            animation: slideText 1s forwards;
+        }
+
+        .wish-line:nth-child(1){ animation-delay: 0.3s; }
+        .wish-line:nth-child(2){ animation-delay: 0.8s; }
+        .wish-line:nth-child(3){ animation-delay: 1.3s; }
+        .wish-line:nth-child(4){ animation-delay: 1.8s; }
+        .wish-line:nth-child(5){ animation-delay: 2.3s; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideText {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); text-shadow: 0 0 15px white; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Balloons -->
+    <img src="https://i.ibb.co/3B7c5Hf/balloon-pink.png" class="balloon" style="left: 10%; animation-delay: 0s;">
+    <img src="https://i.ibb.co/3B7c5Hf/balloon-pink.png" class="balloon" style="left: 35%; animation-delay: 3s;">
+    <img src="https://i.ibb.co/3B7c5Hf/balloon-pink.png" class="balloon" style="left: 60%; animation-delay: 6s;">
+    <img src="https://i.ibb.co/3B7c5Hf/balloon-pink.png" class="balloon" style="left: 80%; animation-delay: 1s;">
+
+    <div class="container">
+
+        <h1>🎉 Special Surprise Video</h1>
+        <p>Enjoy the video… then touch the magic button ❤️</p>
+
+        <!-- VIDEO -->
+        <video id="birthdayVideo" controls>
+            <source src="video.mp4" type="video/mp4">
+        </video>
+
+        <!-- TOUCH ME BUTTON -->
+        <button id="touchBtn">✨ Touch Me ✨</button>
+
+        <!-- WISHES (HIDDEN) -->
+        <div class="wishes-box" id="wishBox">
+            <h2 class="wish-line">🎉 Happy Birthday to a Wonderful Brother-in-Law 🎉</h2>
+            <p class="wish-line">💖 You are an amazing person with a golden heart.</p>
+            <p class="wish-line">✨ May your life be filled with joy, love, and success.</p>
+            <p class="wish-line">🌟 Keep smiling and shining always!</p>
+            <p class="wish-line">🎂 Wishing you a fabulous year ahead!</p>
+        </div>
+
+    </div>
+
+    <script>
+        const video = document.getElementById("birthdayVideo");
+        const touchBtn = document.getElementById("touchBtn");
+        const wishBox = document.getElementById("wishBox");
+
+        // Show button ONLY after video ends
+        video.onended = () => {
+            touchBtn.style.display = "inline-block";
+        };
+
+        // Show wishes when clicking the button
+        touchBtn.onclick = () => {
+            wishBox.style.display = "block";
+            touchBtn.style.display = "none";
+        };
+    </script>
+
+</body>
+</html>
